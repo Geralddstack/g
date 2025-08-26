@@ -96,23 +96,35 @@ export default function ChatScreen() {
 
   const generateAIResponse = (userInput: string): string => {
     const lowerInput = userInput.toLowerCase();
-    
+
+    // Quick action responses
+    if (lowerInput.includes('symptom check')) {
+      return "Sure! Please describe your symptoms, and I'll help analyze them for you.";
+    }
+    if (lowerInput.includes('medication info')) {
+      return "Please provide the name of the medication you want information about.";
+    }
+    if (lowerInput.includes('health tips')) {
+      return "Here are some general health tips: stay hydrated, eat a balanced diet, exercise regularly, and get enough sleep.";
+    }
+    if (lowerInput.includes('emergency')) {
+      return "If you are experiencing a medical emergency, please call your local emergency number or visit the nearest hospital immediately.";
+    }
+
+    // Symptom-based responses
     if (lowerInput.includes('headache') || lowerInput.includes('pain')) {
       return "I understand you're experiencing pain. Can you describe the location and intensity of your headache on a scale of 1-10? Also, when did it start and have you taken any medication for it?";
     }
-    
     if (lowerInput.includes('fever') || lowerInput.includes('temperature')) {
       return "A fever can indicate various conditions. Have you measured your temperature? If it's above 100.4°F (38°C), you should monitor it closely. Are you experiencing any other symptoms like chills, body aches, or fatigue?";
     }
-    
     if (lowerInput.includes('cough') || lowerInput.includes('cold')) {
       return "Coughs can be caused by various factors. Is it a dry cough or are you producing mucus? How long have you had this cough? Are you experiencing any shortness of breath or chest pain?";
     }
-    
     if (lowerInput.includes('stomach') || lowerInput.includes('nausea')) {
       return "Stomach issues can have various causes. Are you experiencing nausea, vomiting, or diarrhea? When did these symptoms start? Have you eaten anything unusual recently?";
     }
-    
+
     return "Thank you for sharing that information. Based on what you've told me, I'd recommend monitoring your symptoms closely. If they persist or worsen, please consider consulting with a healthcare professional. Is there anything specific about your symptoms you'd like me to help clarify?";
   };
 
